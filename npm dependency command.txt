@@ -1,0 +1,9 @@
+Express package cmd for pre dependency
+- npm i express express-validator bcryptjs config gravatar jsonwebtoken 
+mongoose request.
+
+command for devlopment dependency
+-npm i -D nodemon concurrently
+
+for run server with nodemon
+- npm run server
