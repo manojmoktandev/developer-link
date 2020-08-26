@@ -7,3 +7,6 @@ command for devlopment dependency
 
 for run server with nodemon
 - npm run server
+
+for run node server and react both concurrently
+- npm run dev
