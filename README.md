@@ -21,12 +21,14 @@ Deploy to Heroku with a postbuild script
 
 # Quick Start 🚀
 
-Add a default.json file in config folder with the following
+Add or Update a default.json file in config folder with the following
 <pre><span class="pl-c1"></span>
 {
   "mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
   "jwtSecret": "secret",
-  "githubToken": "<yoursecrectaccesstoken>"
+  "githubToken": "<yoursecrectaccesstoken>",
+  "gitClientId":"clientid", 
+  "githubSecret":"githubsecretkey"
 }
 </pre>
 
