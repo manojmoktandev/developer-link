@@ -3,10 +3,7 @@
 <pre>
 Main theme of project 
 Create a developer profile/portfolio, share posts and get help from other developers
-</pre>
-<pre>
 What i have learn is all from udemy course by :
---------------------------------------------------------------------------------------------
 </pre>
 INSTRUCTOR
 Brad Traversy
