@@ -1,9 +1,16 @@
 # Developer-link
+<pre><span class="pl-c1"></span>
+<pre>
+Main theme of project 
 Create a developer profile/portfolio, share posts and get help from other developers
-What i have learn is all from udemy course by
+</pre>
+<pre>
+What i have learn is all from udemy course by :
 --------------------------------------------------------------------------------------------
+</pre>
 INSTRUCTOR
 Brad Traversy
+https://www.udemy.com/course/mern-stack-front-to-back/
 --------------------------------------------------------------------------------------------
 Build a full stack social network app with React, Redux, Node, Express &amp; MongoDB
 
