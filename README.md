@@ -1,8 +1,10 @@
 # Developer-link
 <pre><span class="pl-c1"></span>
-Main theme of project 
+# Main theme of project 
 </pre>
 <pre><span class="pl-c1"></span>
+This is a MERN stack application from the "MERN Stack Front To Back" course on Udemy. 
+It is a small social network app that includes authentication, profiles and forum posts.
 Create a developer profile/portfolio, share posts and get help from other developers
 What i have learn is all from udemy course by :
 </pre>
