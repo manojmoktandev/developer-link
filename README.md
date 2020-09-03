@@ -57,16 +57,16 @@ cd  client
 npm run build
 </pre>
 
-# deploy project on production mode at heroku dev center
+# Deploy project on production mode at Heroku dev center
 https://www.heroku.com/
 sign up for free
 <pre><span class="pl-c1"></span>
 Download and Install Heroku cli
-after installation for checking heroku in command prompt 
+after installation for checking heroku install or not open command prompt 
 heroku  --version
 login heroku 
 1. heroku login
- - url open after enter crendentials
+ - url open after enter credentials
  added script in package.json under scrips object.
  "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
  change made for production in node server.js
@@ -79,12 +79,12 @@ login heroku
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     });
   }
-2.heroku create  ::for creating application or worspace in heroku
-3.after create you get application in heroku dashboard and  click on last generated application.
-4.after created  you have to git  initialize repository and  add all  file in respective repo.
+2.heroku create  ::command for creating application or worspace in heroku dev
+3.after create you get application in heroku dashboard.
+4.after created  you have to git  initialize repo and  add all  file in respective repo.
 5.now  get deploy git command info copy from your heroku application and paste in your  application root. 
-6.git push heroku master.:: it compiles  and deploy in heroku application.
-7.heroku open to see  you deploy application.
+6.git push heroku master :: commands compiles  and deploy in heroku application.
+7.heroku open ::command to see  you deploy application.
 https://quiet-reaches-35075.herokuapp.com/
 
 </pre>
