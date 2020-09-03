@@ -1,4 +1,5 @@
 node_modules
 resource_file
 .vscode
+config/default.json
 package-lock.json

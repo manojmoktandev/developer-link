@@ -9,7 +9,7 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client \"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Manoj Moktan",
   "license": "MIT",
@@ -25,7 +25,8 @@
     "mongoose": "^5.9.23",
     "react-confirm-alert": "^2.6.1",
     "react-moment": "^0.9.7",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "normalize-url": "^5.0.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
