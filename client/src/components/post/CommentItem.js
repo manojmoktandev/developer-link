@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../actions/post';
+import CommentReply from './CommentReply';
+import CommentReplyForm from './CommentReplyForm';
 
-const CommentItem = ({deleteComment, postId,comment:{_id,text,name,avatar,user,date},auth}) => {
+
+const CommentItem = ({deleteComment, postId,comment:{_id,text,name,avatar,user,date,reply},auth}) => {
     return (
         <div className="post bg-white p-1 my-1">
         <div>
@@ -23,12 +26,19 @@ const CommentItem = ({deleteComment, postId,comment:{_id,text,name,avatar,user,d
             {text}
           </p>
            <p className="post-date">
-                    Posted on <Moment format="MM/DD/YYYY">{date}</Moment>
+                    Posted on <Moment format="ll">{date}</Moment>
           </p>
+          
           {!auth.loading && user === auth.user._id && ( <button  type="button" className="btn btn-danger" onClick={e=>deleteComment(postId,_id)}>
-            <i className="fas fa-times"></i>
+            <i className="fas fa-times"></i> Delete
           </button>)}
-         
+          
+          <CommentReplyForm postId={postId} commentId={_id} />
+          <div className="comments">
+              {reply.map((comment_reply) => (
+                <CommentReply key={comment_reply._id} reply={comment_reply} postId={postId} commentId={_id}  />
+              ))}
+          </div>
         </div>
       </div>
     )
@@ -41,7 +51,7 @@ CommentItem.propTypes = {
   deleteComment:PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
-    auth:state.auth
+  auth: state.auth
 })
 
 export default connect(mapStateToProps, { deleteComment})(CommentItem);

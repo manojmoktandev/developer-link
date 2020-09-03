@@ -1,7 +1,7 @@
 {
-    "mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
-    "jwtSecret": "secret",
-    "githubToken": "<yoursecrectaccesstoken>",
-    "gitClientId":"123456789",
-    "githubSecret":"123456789"
-  }
+  "mongoURI":"mongodb+srv://manoj2020:manoj2020@mern-db.cj1p0.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret":"securetoken",
+  "gitClientId":"a95709006ced3b5c7802",
+  "githubToken":"a95709006ced3b5c7802",
+  "githubSecret":"99ee90f41b9d6feea89a6aaf3ef86dcdd364a68a"
+}

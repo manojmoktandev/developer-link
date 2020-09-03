@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 const Posts = require('../../models/Post');
 const Users = require('../../models/Users');
 const { check, validationResult } = require('express-validator');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 
 // @route       POST api/post
@@ -50,7 +51,7 @@ router.get('/', auth, async (req, res)=>{
 // @route       GET api/post/:id
 //@desc         Get POST By ID
 //@access       Private
-router.get('/:id', auth, async (req, res)=>{
+router.get('/:id', [auth,checkObjectId('id')], async (req, res)=>{
     try {
         const posts = await Posts.findById(req.params.id);
         if (!posts) {
@@ -70,7 +71,7 @@ router.get('/:id', auth, async (req, res)=>{
 // @route       DELETE api/post/:id
 //@desc         DELETE POST By ID
 //@access       Private
-router.delete('/:id', auth, async (req, res)=>{
+router.delete('/:id', [auth,checkObjectId('id')], async (req, res)=>{
     try {
         const post = await Posts.findById(req.params.id);
         //checked  own post user
@@ -95,7 +96,7 @@ router.delete('/:id', auth, async (req, res)=>{
 // @route    PUT api/posts/like/:id
 // @desc     Like a post
 // @access   Private
-router.put('/like/:id', auth, async (req, res) => {
+router.put('/like/:id', [auth,checkObjectId('id')], async (req, res) => {
     try {
       const post = await Posts.findById(req.params.id);
         if (!post) {
@@ -120,7 +121,7 @@ router.put('/like/:id', auth, async (req, res) => {
   // @route    PUT api/posts/unlike/:id
   // @desc     Unlike a post
   // @access   Private
-  router.put('/unlike/:id', auth, async (req, res) => {
+  router.put('/unlike/:id', [auth,checkObjectId('id')], async (req, res) => {
     try {
       const post = await Posts.findById(req.params.id);
       if (!post) {
@@ -148,7 +149,9 @@ router.put('/like/:id', auth, async (req, res) => {
 // @route    POST api/posts/comment
 // @desc     ADD COMMENT on post
 // @access   Private
-router.post('/comment/:id', [auth, [check('text', 'Comment text is required').not().isEmpty()]], async (req, res) => {
+router.post('/comment/:id', [auth,
+  checkObjectId('id'),
+  [check('text', 'Comment text is required').not().isEmpty()]], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ error: errors.array() });
@@ -202,6 +205,43 @@ router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
 
     post.comment.splice(removeIndex, 1);
 
+    await post.save();
+    return res.json(post.comment);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/posts/comment/reply
+// @desc     ADD reply COMMENT on post
+// @access   Private
+router.post('/:id/comment/reply',[auth,
+  checkObjectId('id'),
+  [check('text', 'Comment text is required').not().isEmpty()]], async (req, res) => {
+  const errors = validationResult(req); 
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ error: errors.array() });
+  }
+    try {
+      const user = await Users.findById(req.user.id).select('-password');
+      const post = await Posts.findById(req.body.postId);
+      if (!post) {
+          return res.status(404).json({ msg: 'Post not found' });
+      }
+      const replyComment = {
+        text: req.body.text,
+        name: user.name,
+        avatar: user.avatar,
+        user: req.user.id,
+        commentId: req.body.commentId,
+      };
+
+      post.comment.forEach((comment,index) => {
+        if (comment._id == req.body.commentId) {
+          post.comment[index].reply.unshift(replyComment);
+       }
+      });
     await post.save();
     return res.json(post.comment);
   } catch (err) {

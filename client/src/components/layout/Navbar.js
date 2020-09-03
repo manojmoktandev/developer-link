@@ -9,13 +9,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <ul>
             <li>
                 <Link to='/dashboard'>
-                    <i className='fas user-circle' />{' '}
+                   <i className="fa fa-tachometer" aria-hidden="true"></i> {' '}
                     Dashboard
                 </Link>
             </li>
             <li>
                 <Link to='/posts'>
-                    <i className='fas fa-user' />{' '}
+                    <i className="fas fa-books    "></i>{' '}
                     Posts
                 </Link>
             </li>
@@ -34,7 +34,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <ul>
             <li>   <Link to='/dashboard'>
-                    <i className='fas fa-tachometer' />{' '}
+                    <i className="fa fa-tachometer" aria-hidden="true"></i> {' '}
                     Dashboard
                 </Link>
             </li>
@@ -44,9 +44,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     Profile
                 </Link>
             </li>
-            <li><Link to='/Register'>Register</Link>
+            <li><Link to='/Register'>
+            <i className="fa fa-user-plus" aria-hidden="true"></i>
+            {' '} Register</Link>
             </li>
-            <li><Link to='/Login'>Login</Link></li>
+            <li><Link to='/Login'><i className="fa fa-sign-in" aria-hidden="true"></i>{' '}Login</Link></li>
         </ul>
         
     )

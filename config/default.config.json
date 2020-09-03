@@ -1,0 +1,7 @@
+{
+    "mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
+    "jwtSecret": "secret",
+    "githubToken": "<yoursecrectaccesstoken>",
+    "gitClientId":"123456789",
+    "githubSecret":"123456789"
+  }

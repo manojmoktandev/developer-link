@@ -54,10 +54,10 @@ const Login = ({login,isAuthenticated}) => {
                 />
                 </div>
                 
-                <input type="submit" className="btn btn-primary" value="Login" />
+                <input type="submit" className="btn btn-primary fa fa-sign-in"  value="Login" />
             </form>
             <p className="my-1">
-            Don't have an account <Link to='/register'>Sign Up</Link>
+            Don't have an account <Link to='/register'> <i className="fa fa-user-plus" aria-hidden="true"></i> Sign Up</Link>
         </p>
         </Fragment>
             

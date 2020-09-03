@@ -6,7 +6,8 @@ import {
     ADD_POST,
     GET_POST,
     ADD_COMMENT,
-    DELETE_COMMENT
+    DELETE_COMMENT,
+    ADD_COMMENT_REPLY
 } from '../actions/types';
 const initialState = {
     posts: [],
@@ -25,6 +26,12 @@ export default function (state = initialState, action) {
                 loading:false
             }
         case ADD_COMMENT:
+            return {
+                ...state,
+                post: { ...state.post, comment: payload },
+                loading:false
+            }
+        case ADD_COMMENT_REPLY:
             return {
                 ...state,
                 post: { ...state.post, comment: payload },
