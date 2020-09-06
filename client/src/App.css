@@ -142,6 +142,7 @@ img {
   outline: none;
 }
 
+
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
@@ -149,6 +150,13 @@ img {
   margin: 0.3rem;
   background: var(--light-color);
   color: #333;
+}
+.animate-badge {
+  height: 50px;
+  font-size: 2.9rem;
+  text-align: center;
+  color:#f7b4b4;
+  font-weight: bold;
 }
 
 .alert {
@@ -580,4 +588,23 @@ button {
   .post button {
     padding: 0.3rem 0.4rem;
   }
+}
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #17a2b8;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  margin-left: 45px;
+}
+.initials {
+  position: relative;
+  top: 25px; /* 25% of parent */
+  font-size: 50px; /* 50% of parent */
+  line-height: 50px; /* 50% of parent */
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
 }

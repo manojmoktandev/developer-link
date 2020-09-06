@@ -8,17 +8,26 @@ import CommentReply from './CommentReply';
 import CommentReplyForm from './CommentReplyForm';
 
 
-const CommentItem = ({deleteComment, postId,comment:{_id,text,name,avatar,user,date,reply},auth}) => {
+const CommentItem = ({ deleteComment, postId, comment: { _id, text, name, avatar, user, date, reply }, auth }) => {
+  const splitname = name.split(' '),
+        avatarName = splitname[0].charAt(0).toUpperCase()+splitname[1].charAt(0).toUpperCase();
     return (
         <div className="post bg-white p-1 my-1">
         <div>
           <Link to={`/profile/${user}`}>
-            <img
+            {/* {avatar && <img
               className="round-img"
               src={avatar}
               alt=""
-            />
-                    <h4>{name}</h4>
+            />} */}
+            
+              <div className="avatar-circle">
+                <span className="initials">
+                  {avatarName}
+                </span>
+              </div>
+            
+            <h4>{name}</h4>
           </Link>
         </div>
         <div>

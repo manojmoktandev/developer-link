@@ -9,10 +9,28 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     CLEAR_PROFILE,
-    LOGOUT
+    LOGOUT,
+    GET_DASHBOARD_COUNT
 } from './types';
 
 import setAuthToken from '../utils/setAuthToken';
+
+//LOAD USER
+export const loadDashboard = () => async dispatch => {
+    try {
+        const res = await api.get('/auth/dashboardCount');
+        dispatch({
+            type: GET_DASHBOARD_COUNT,
+            payload:res.data
+        })
+        
+    } catch (err) {
+        if (err.msg) {
+            console.log(err.msg);
+            //dispatch(setAlert(err.msg, 'danger'));    
+        }
+    }
+}
 
 //LOAD USER
 export const loadUser = () => async dispatch => {

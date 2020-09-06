@@ -7,14 +7,16 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_PROFILE,
-    DELETE_ACCOUNT
+    DELETE_ACCOUNT,
+    GET_DASHBOARD_COUNT
 } from './../actions/types';
 const initialState =
 {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     loading: true,
-    user:null
+    user:null,
+    dashboardCount:{dev:0,post:0}
 }
 export default function (state = initialState, action) {
     const { type, payload } = action;
@@ -26,6 +28,12 @@ export default function (state = initialState, action) {
             loading: false,
             user:payload
             }
+        case GET_DASHBOARD_COUNT:
+            return {
+                ...state,
+                loading: false,
+                dashboardCount:payload
+                }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token);

@@ -2,11 +2,27 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const User = require('../../models/Users');
+const Post = require('../../models/Post');
+
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcyrpt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 
+
+// @route       GET api/dashboardCount
+//@desc         Test route
+//@access       Public
+router.get('/dashboardCount',  async(req, res) => {
+    try {
+        const user = await User.countDocuments();
+        const post = await Post.countDocuments();
+        const dashboardCount = { 'dev': user, 'post': post };
+        res.json(dashboardCount);
+    } catch (error) {
+        res.status(500).send('Server Errror');
+    }
+});
 
 // @route       GET api/auth
 //@desc         Test route

@@ -1,13 +1,22 @@
-import React from 'react';
+import React,{useEffect,Fragment} from 'react';
 import { Link,Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import PropTypes from 'prop-types';
+import AnimatedNumber from 'animated-number-react';
+import PropTypes from 'prop-types';
+import { loadDashboard } from '../../actions/auth';
 
-const Landing = ({ isAuthenticated }) => {
+const Landing = ({ isAuthenticated, dashboardCount:{dev,post}, loadDashboard}) => {
+  useEffect(() => {
+    loadDashboard()
+  }, [loadDashboard]);
+  
+  const formatValue = (value) => value.toFixed(0);
+ 
   if (isAuthenticated) {
     return <Redirect to='/Dashboard'/>
   }
     return (
+      <Fragment>
         <section className="landing">
         <div className="dark-overlay">
           <div className="landing-inner">
@@ -20,13 +29,35 @@ const Landing = ({ isAuthenticated }) => {
               <Link to='/register' className="btn btn-primary"> <i className="fa fa-user-plus" aria-hidden="true"></i>  Sign Up</Link>
               <Link to='/login' className="btn btn-light"> <i className="fa fa-sign-in" aria-hidden="true"></i> Login</Link>
             </div>
+            <div className="buttons animate-badge ">
+               Developers &nbsp;
+              <AnimatedNumber
+                value={dev}
+                duration ="2000"
+                  delay="3"
+                  formatValue={formatValue}
+              />
+            </div>
+            <div className="buttons animate-badge "> Posts &nbsp;
+              <AnimatedNumber
+                value={post}
+                duration ="2000"
+                delay="3"
+                formatValue={formatValue}
+              />
+            </div>
           </div>
         </div>
-      </section>
+        </section>
+        </Fragment>
     )
 }
+Landing.propTypes = {
+  loadDashboard: PropTypes.func.isRequired,
+}
 const mapStateToProps = state => ({
-  isAuthenticated :state.isAuthenticated
+  isAuthenticated: state.isAuthenticated,
+  dashboardCount:state.auth.dashboardCount,
 });
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps,{ loadDashboard })(Landing);
 
