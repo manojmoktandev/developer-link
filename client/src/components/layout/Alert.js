@@ -11,7 +11,7 @@ const Alert = ({ alerts }) => {
         case alertType ==='success':
             toastMessage = toast.success(msg);
             break;
-        case alertType ==='error':
+        case alertType ==='error' || alertType ==='danger' :
                 toastMessage = toast.error(msg);
             break;
         case alertType ==='warning':
