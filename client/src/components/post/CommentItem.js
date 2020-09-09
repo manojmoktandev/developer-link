@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,10 +7,14 @@ import { deleteComment } from '../../actions/post';
 import CommentReply from './CommentReply';
 import CommentReplyForm from './CommentReplyForm';
 
-
 const CommentItem = ({ deleteComment, postId, comment: { _id, text, name, avatar, user, date, reply }, auth }) => {
   const splitname = name.split(' '),
-        avatarName = splitname[0].charAt(0).toUpperCase()+splitname[1].charAt(0).toUpperCase();
+    avatarName = splitname[0].charAt(0).toUpperCase() + splitname[1].charAt(0).toUpperCase();
+  const [showReplyForm, showCommentReply] = useState(false);
+  
+  function toggle() {
+    showCommentReply(showReplyForm => !showReplyForm);
+  }
     return (
         <div className="post bg-white p-1 my-1">
         <div>
@@ -38,11 +42,13 @@ const CommentItem = ({ deleteComment, postId, comment: { _id, text, name, avatar
                     Posted on <Moment format="ll">{date}</Moment>
           </p>
           
-          {!auth.loading && user === auth.user._id && ( <button  type="button" className="btn btn-danger" onClick={e=>deleteComment(postId,_id)}>
-            <i className="fas fa-times"></i> Delete
-          </button>)}
+          {!auth.loading && user === auth.user._id && ( 
+            <i className="fa fa-trash-o" onClick={e=>deleteComment(postId,_id)}></i> 
+          )}
+          &nbsp;
+          <i className="fa fa-reply" aria-hidden="true" onClick={toggle}></i>
+          {showReplyForm && (<CommentReplyForm postId={postId} commentId={_id} />)}
           
-          <CommentReplyForm postId={postId} commentId={_id} />
           <div className="comments">
               {reply.map((comment_reply) => (
                 <CommentReply key={comment_reply._id} reply={comment_reply} postId={postId} commentId={_id}  />

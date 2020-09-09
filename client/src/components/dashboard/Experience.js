@@ -26,7 +26,7 @@ const Experience = ({ experience,deleteExperience }) => {
           <button
                    onClick={()=>deleteExperience(exp._id)}
             className="btn btn-danger"
-          >
+          ><i className="fa fa-trash-o"></i>{' '}
             Delete
           </button>
         </td>

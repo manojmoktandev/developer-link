@@ -142,6 +142,10 @@ img {
   outline: none;
 }
 
+.fa {
+  border: none;
+  cursor: pointer;
+}
 
 .badge {
   font-size: 0.8rem;
