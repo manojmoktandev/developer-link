@@ -146,6 +146,18 @@ img {
   border: none;
   cursor: pointer;
 }
+.card{
+  display: inline-block;
+  margin:10px;
+  color:#f9f9f9;
+  border:1px solid #982a2a;
+  box-shadow: 0 2px 2px #af3b20;
+  width: 200px;
+  font-size: 18px;
+}
+.card-wrapper{
+  display: inline-flex;
+}
 
 .badge {
   font-size: 0.8rem;

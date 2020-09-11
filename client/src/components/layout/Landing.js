@@ -29,23 +29,28 @@ const Landing = ({ isAuthenticated, dashboardCount:{dev,post}, loadDashboard}) =
               <Link to='/register' className="btn btn-primary"> <i className="fa fa-user-plus" aria-hidden="true"></i>  Sign Up</Link>
               <Link to='/login' className="btn btn-light"> <i className="fa fa-sign-in" aria-hidden="true"></i> Login</Link>
             </div>
-            <div className="buttons animate-badge ">
-               Developers &nbsp;
-              <AnimatedNumber
-                value={dev}
-                duration ="2000"
-                  delay="3"
-                  formatValue={formatValue}
-              />
+              <div className="card-wrapper">
+                <div className="card">
+                <h1>Developers</h1> 
+                  <AnimatedNumber
+                    value={dev}
+                    duration ="2000"
+                      delay="3"
+                      formatValue={formatValue}
+                  />
+                </div>
+                <div className="card">
+                <h1>Posts</h1> 
+                  <AnimatedNumber
+                      value={post}
+                      duration ="2000"
+                      delay="3"
+                      formatValue={formatValue}
+                    />
+              </div>
+                
             </div>
-            <div className="buttons animate-badge "> Posts &nbsp;
-              <AnimatedNumber
-                value={post}
-                duration ="2000"
-                delay="3"
-                formatValue={formatValue}
-              />
-            </div>
+             
           </div>
         </div>
         </section>
