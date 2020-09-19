@@ -31,22 +31,27 @@ const Landing = ({ isAuthenticated, dashboardCount:{dev,post}, loadDashboard}) =
             </div>
               <div className="card-wrapper">
                 <div className="card">
-                <h1>Developers</h1> 
-                  <AnimatedNumber
-                    value={dev}
-                    duration ="2000"
-                      delay="3"
-                      formatValue={formatValue}
-                  />
+                  <span className="card-title">Developers</span > 
+                  &nbsp;&nbsp;
+                  <span className="card-val"> <AnimatedNumber
+                  value={dev}
+                  duration ="2000"
+                    delay="3"
+                    formatValue={formatValue}
+                /></span>
                 </div>
-                <div className="card">
-                <h1>Posts</h1> 
-                  <AnimatedNumber
+                <div className="card-post">
+                  <span className="card-title">Posts</span> 
+                  &nbsp;&nbsp;
+                  <span className="card-val">
+                    <AnimatedNumber
                       value={post}
                       duration ="2000"
                       delay="3"
                       formatValue={formatValue}
                     />
+                  </span>
+                 
               </div>
                 
             </div>
